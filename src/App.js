@@ -16,15 +16,37 @@ class App extends React.Component{
   }
 
 handlenum1 = ( event ) =>{
-    this.setState({
-      num1: event.target.value
-    })
+ // const num1 = (event.target.validity.valid) ? event.target.value : this.state.num1;
+ //this.setState({ num1 });
+    if (event.target.validity.valid) 
+    {
+      this.setState({
+        num1: event.target.value
+      })
+    }
+    else
+    {
+      this.setState({
+        result: "please Enter a numerical value"
+      })
+    } 
+    
 }
 
 handlenum2 = ( event ) =>{
+  if (event.target.validity.valid) 
+  {
     this.setState({
       num2: event.target.value
     })
+  }
+  else
+  {
+    this.setState({
+      result: "please Enter a numerical value"
+    })
+  } 
+  
 }
 submit = (event) =>{
   event.preventDefault();   
@@ -76,6 +98,7 @@ render()
               type="text"
               name="num1"
               id="num1"
+              pattern="[0-9]*"
               required
               value={this.state.num1}
               onChange = {this.handlenum1} />    
@@ -97,6 +120,7 @@ render()
               type="text"
               name="num2"
               id="num2"
+              pattern="[0-9]*"
               required
               value={this.state.num2} 
               onChange = {this.handlenum2}/>    
