@@ -9,7 +9,8 @@ class App extends React.Component{
     this.state = {
       num1: "", 
       num2: "",
-      result: "" 
+      result: "" ,
+      value : "Addition"
       
     };
   }
@@ -27,8 +28,8 @@ handlenum2 = ( event ) =>{
 }
 submit = (event) =>{
   event.preventDefault();   
-  const value =  event.target.getAttribute('value');
-  switch (value){
+  //const value =  event.target.getAttribute('value');
+  switch (this.state.value){
 
     case "Addition" :
     this.setState({result : parseInt(this.state.num1) + parseInt(this.state.num2)})
@@ -82,7 +83,7 @@ render()
           <br/><br/>
           <label htmlFor = "operation">
             Operation: <br/>
-          <select id = "calc" value = {this.state.value} onChange ={this.ChangeState} >
+          <select id = "calc" value={this.state.value} onChange ={this.ChangeState} >
               <option value = "Addition"> + </option>
               <option value = "Subtraction"> - </option>
               <option value = "Multiplication"> * </option>
